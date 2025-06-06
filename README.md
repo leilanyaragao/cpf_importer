@@ -50,9 +50,14 @@ Projeto em Go para importar, higienizar e validar dados de clientes a partir de 
      - d mydatabase -> Nome do banco de dados utilizado no projeto, isso é configurado no projeto.
        
 
+      > - Ao executar o comando acima, a senha do banco de dados deve será requerida. Ela está configurada na variável dbPassword no arquivo postgres.go, com valor padrão "password", podendo ser modificada conforme necessário.
+
 
     Após acessar o prompt do PostgreSQL, você pode executar consultas como:
   
       ```SELECT COUNT(*) FROM clients; #Esse comando retornará a quantidade total de registros inseridos na tabela clients.```
 
+
+ > [!NOTE]
+   > - Ao finalizar o projeto, lembre-se de remover os volumes para garantir que, na próxima execução, o banco de dados seja inicializado corretamente.
 
