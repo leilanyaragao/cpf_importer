@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    volumes:
+      - postgres_data:/var/lib/postgresql/data 
+    ports:
+      - "5432:5432" 
+
+  app:
+    build: . 
+    restart: on-failure 
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: "postgresql://user:password@postgres:5432/mydatabase?sslmode=disable"
+    volumes:
+      - ./base_teste.txt:/app/base_teste.txt 
+
+volumes:
+  postgres_data: 
